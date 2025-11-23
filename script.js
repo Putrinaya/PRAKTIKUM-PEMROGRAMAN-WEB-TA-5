@@ -15,14 +15,12 @@ function updateDisplays() {
   memoryDisplay.textContent = memory;
 }
 
-// ======================= INPUT NUMBER ===========================
 function pushDigit(d) {
   if (d === "." && entry.includes(".")) return;
   entry += d;
   updateDisplays();
 }
 
-// ======================= OPERATORS ==============================
 function applyOperator(op) {
   if (entry !== "") {
     expr += entry;
@@ -32,7 +30,6 @@ function applyOperator(op) {
   updateDisplays();
 }
 
-// ======================= CLEAR FUNCTIONS ========================
 function clearEntry() {
   entry = "";
   updateDisplays();
@@ -44,7 +41,6 @@ function clearAll() {
   updateDisplays();
 }
 
-// ======================= SAFE EVAL ==============================
 function safeEval(e) {
   if (/\/0(?!\.)/.test(e)) {
     alert("Error: Pembagian dengan nol tidak diperbolehkan!");
@@ -53,7 +49,6 @@ function safeEval(e) {
   return Function(`return (${e})`)();
 }
 
-// ======================= EQUALS =================================
 function computeEquals() {
   if (entry !== "") expr += entry;
 
@@ -80,14 +75,12 @@ function computeEquals() {
   }
 }
 
-// ======================= PERCENT ================================
 function percent() {
   if (entry === "") return;
   entry = String(parseFloat(entry) / 100);
   updateDisplays();
 }
 
-// ======================= HISTORY RENDER ==========================
 function renderHistory() {
   historyList.innerHTML = "";
   history.forEach(h => {
@@ -98,13 +91,11 @@ function renderHistory() {
   });
 }
 
-// ======================= MEMORY =================================
 document.getElementById("mc").onclick = () => { memory = 0; updateDisplays(); };
 document.getElementById("mr").onclick = () => { entry = String(memory); updateDisplays(); };
 document.getElementById("mplus").onclick = () => { memory += parseFloat(entry || 0); updateDisplays(); };
 document.getElementById("mminus").onclick = () => { memory -= parseFloat(entry || 0); updateDisplays(); };
 
-// ======================= BUTTON CLICKS ===========================
 buttons.onclick = (e) => {
   const t = e.target;
   const val = t.dataset.value;
@@ -121,7 +112,6 @@ buttons.onclick = (e) => {
   }
 };
 
-// ======================= KEYBOARD SUPPORT ========================
 document.addEventListener("keydown", function(event) {
   const k = event.key;
 
@@ -137,3 +127,4 @@ document.addEventListener("keydown", function(event) {
 });
 
 updateDisplays();
+
