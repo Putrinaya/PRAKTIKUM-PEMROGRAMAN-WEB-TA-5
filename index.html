@@ -291,13 +291,11 @@
     });
   }
 
-  // Memory
   mc.onclick = ()=>{memory=0;updateDisplays();};
   mr.onclick = ()=>{entry=String(memory);updateDisplays();};
   mplus.onclick = ()=>{memory += parseFloat(entry||0);updateDisplays();};
   mminus.onclick = ()=>{memory -= parseFloat(entry||0);updateDisplays();};
 
-  // Buttons
   buttons.onclick = (e)=>{
     const t = e.target;
     const val = t.dataset.value;
@@ -314,7 +312,6 @@
     }
   };
 
-  // KEYBOARD SUPPORT
   document.addEventListener("keydown", function(event){
     const k = event.key;
 
@@ -332,3 +329,4 @@
 
 </body>
 </html>
+
